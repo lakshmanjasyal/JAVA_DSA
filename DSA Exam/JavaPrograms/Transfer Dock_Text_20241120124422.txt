@@ -1,0 +1,121 @@
+import java.util.Scanner;
+
+class Node {
+    int coefficient, exponent;
+    Node next;
+
+    Node(int coefficient, int exponent) {
+        this.coefficient = coefficient;
+        this.exponent = exponent;
+        this.next = null;
+    }
+}
+
+class Polynomial {
+    Node head;
+
+    public void insertTerm(int coefficient, int exponent) {
+        Node newNode = new Node(coefficient, exponent);
+        if (head == null || head.exponent < exponent) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null && current.next.exponent >= exponent) {
+                current = current.next;
+            }
+            if (current.exponent == exponent) {
+                current.coefficient += coefficient;
+            } else {
+                newNode.next = current.next;
+                current.next = newNode;
+            }
+        }
+    }
+
+    public static Polynomial addPolynomials(Polynomial p1, Polynomial p2) {
+        Polynomial result = new Polynomial();
+        Node term1 = p1.head;
+        Node term2 = p2.head;
+
+        while (term1 != null && term2 != null) {
+            if (term1.exponent == term2.exponent) {
+                result.insertTerm(term1.coefficient + term2.coefficient, term1.exponent);
+                term1 = term1.next;
+                term2 = term2.next;
+            } else if (term1.exponent > term2.exponent) {
+                result.insertTerm(term1.coefficient, term1.exponent);
+                term1 = term1.next;
+            } else {
+                result.insertTerm(term2.coefficient, term2.exponent);
+                term2 = term2.next;
+            }
+        }
+
+        while (term1 != null) {
+            result.insertTerm(term1.coefficient, term1.exponent);
+            term1 = term1.next;
+        }
+
+        while (term2 != null) {
+            result.insertTerm(term2.coefficient, term2.exponent);
+            term2 = term2.next;
+        }
+
+        return result;
+    }
+
+    public void displayPolynomial() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.coefficient + "x^" + current.exponent);
+            current = current.next;
+            if (current != null) {
+                System.out.print(" + ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+public class PolynomialAddition {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        Polynomial polynomial1 = new Polynomial();
+        Polynomial polynomial2 = new Polynomial();
+
+        System.out.println("Enter the number of terms in the first polynomial:");
+        int terms1 = scanner.nextInt();
+        System.out.println("Enter the terms (coefficient and exponent) for the first polynomial:");
+        for (int i = 0; i < terms1; i++) {
+            int coefficient = scanner.nextInt();
+            int exponent = scanner.nextInt();
+            polynomial1.insertTerm(coefficient, exponent);
+        }
+
+        System.out.println("Enter the number of terms in the second polynomial:");
+        int terms2 = scanner.nextInt();
+        System.out.println("Enter the terms (coefficient and exponent) for the second polynomial:");
+        for (int i = 0; i < terms2; i++) {
+            int coefficient = scanner.nextInt();
+            int exponent = scanner.nextInt();
+            polynomial2.insertTerm(coefficient, exponent);
+        }
+
+        Polynomial result = Polynomial.addPolynomials(polynomial1, polynomial2);
+        
+        System.out.println("First Polynomial:");
+        polynomial1.displayPolynomial();
+        
+        System.out.println("Second Polynomial:");
+        polynomial2.displayPolynomial();
+
+        System.out.println("Result of Addition:");
+        result.displayPolynomial();
+
+        scanner.close();
+    }
+}
+
+

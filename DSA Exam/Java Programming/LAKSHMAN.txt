@@ -1,0 +1,1691 @@
+Name:Lakshman Narayan Jasyal
+Roll No.64
+
+
+							EXPERIMENT NO.2
+							Even or Odd:
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class inputInteger{
+public static void main(String args[])throws Exception{
+
+InputStreamReader r=new InputStreamReader(System.in);
+BufferedReader br=new BufferedReader(r);
+System.out.print("Enter the number:");
+int n=Integer.parseInt(br.readLine());
+if(n%2==0){
+System.out.println(n+" is even");}
+else{
+System.out.println(n+" is odd");}
+}
+}
+							OUTPUT:-
+Enter the number:2
+2 is even
+							
+						-----------------------------------
+						
+							EXPERIMENT NO.3
+							Calculator:
+import java.util.*;
+
+public class calculator{
+public static void main(String args[]){
+Scanner sc=new Scanner(System.in);
+System.out.print("Enter the operations you want to perform in calculator:");
+int z=sc.nextInt();
+for(int i=0;i<z;i++){
+System.out.print("Enter first number:");
+int a=sc.nextInt();
+System.out.print("Enter second number:");
+int b=sc.nextInt();
+System.out.println("Enter the operation:\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.Modulus");
+int k=sc.nextInt();
+
+switch(k){
+case 1:System.out.println(a+"+"+b+"="+(a+b));
+	break;
+case 2:System.out.println(a+"-"+b+"="+(a-b));
+	break;
+case 3:System.out.println(a+"*"+b+"="+(a*b));
+	break;
+case 4:System.out.println(a+"/"+b+"="+(a/b));
+	break;
+case 5:System.out.println(a+"%"+b+"="+(a%b));
+	break;
+default:System.out.println("Invalid Input!");
+}
+}
+}
+}
+							OUTPUT
+Enter the operations you want to perform in calculator:4
+Enter first number:1
+Enter second number:2
+Enter the operation:
+1.Addition
+2.Subtraction
+3.Multiplication
+4.Division
+5.Modulus
+1
+1+2=3
+Enter first number:3
+Enter second number:2
+Enter the operation:
+1.Addition
+2.Subtraction
+3.Multiplication
+4.Division
+5.Modulus
+2
+3-2=1
+							
+						-----------------------------------
+						
+							EXPERIMENT NO.4
+							Prime Numbers:
+import java.util.*;
+
+public class printPrime{
+public static void main(String args[]){
+Scanner sc=new Scanner(System.in);
+
+System.out.print("Enter lower range:");
+int a=sc.nextInt();
+System.out.print("Enter upper range:");
+int b=sc.nextInt();
+for(int i=a;i<b;i++){
+if(i>1){
+Boolean isPrime=true;
+for(int j=2;j<Math.sqrt(i);j++){
+if(i%j==0){
+isPrime=false;
+break;
+}
+}
+if(isPrime){
+System.out.print(i+" ");}
+}
+}
+}
+}							
+							OUTPUT:
+Enter lower range:10
+Enter upper range:20
+11 13 17 19 							
+						-----------------------------------
+						
+							EXPERIMENT NO.5
+							Stack Using Array:
+import java.util.*;
+class stackUsingArray{
+     static class overStack{
+	private int max;
+	private int[] arr;
+	private int top;
+	public overStack(int size){
+		max=size;
+		arr=new int[max];
+		top=-1;
+}
+
+// Check Full
+public boolean isFull(){
+return top==max-1;}
+//Check Empty
+public boolean isEmpty(){
+return top==-1;
+}
+
+//Push method
+public void push(int data){
+if(isFull()){
+System.out.println("Stack is full,cannot push");
+}
+
+top++;
+arr[top]=data;
+System.out.println("Pushed:"+data);
+
+}
+//Pop method
+public int pop(){
+if(isEmpty()){System.out.println("Stack is empty,cannot pop");  return -1;}
+else{
+int temp=arr[top];
+top--;
+System.out.println("Popped:"+temp);
+return temp;}
+}
+
+// Peek method
+public int peek(){
+if(isEmpty()){
+System.out.println("Stack is empty");
+return -1;
+}
+else{
+return arr[top];}
+}
+// Display method
+public void Display(){
+if(isEmpty()){
+System.out.println("Stack is empty");}
+else{
+System.out.println("Stack elements:");
+for(int i=0;i<=top;i++) {
+System.out.println(arr[i]+ " ");
+}
+System.out.println();
+}}
+}
+
+//Main method
+public static void main(String[] args){
+Scanner sc=new Scanner (System.in);
+System.out.println("Enter the size of stack:");
+int n=sc.nextInt();
+overStack stack=new overStack(n);
+while(true){
+System.out.print("Choose an operation:\n1.Push\n2.Pop\n3.Peek\n4.Display Stack");
+System.out.print("Enter the choice");
+int choice=sc.nextInt();
+switch(choice){
+case 1: System.out.print("Enter number to push:");
+	int data=sc.nextInt();
+	stack.push(data);
+	break;
+case 2: stack.pop();
+	break;
+case 3: int peekedValue=stack.peek();
+	if(peekedValue!=-1){
+	System.out.println("Top element:"+peekedValue);}
+	break;
+case 4: stack.Display();
+	break;
+default:System.out.println("Invalid choice!");}}
+
+}
+}							
+							OUTPUT:-
+Enter the size of stack:
+3
+Choose an operation:
+1.Push
+2.Pop
+3.Peek
+4.Display Stack
+Enter the choice1
+Enter number to push:2
+Pushed:2
+Choose an operation:
+1.Push
+2.Pop
+3.Peek
+4.Display Stack
+Enter the choice1
+Enter number to push:3
+Pushed:3
+Choose an operation:
+1.Push
+2.Pop
+3.Peek
+4.Display Stack
+Enter the choice4
+Stack elements:
+2 
+3 
+
+Choose an operation:
+1.Push
+2.Pop
+3.Peek
+4.Display Stack							
+						-----------------------------------
+						
+							EXPERIMENT NO.6
+							Reverse String Using Stack:
+
+import java.util.*;
+
+public class stackUsingLL{
+    Node head;
+     class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+
+// Empty
+    public boolean isEmpty(){
+        return head==null;
+    }
+
+// Push()
+    public void push(int data){
+        Node newNode=new Node(data);
+        if(isEmpty()){
+            head=newNode;
+            return;
+        }
+        newNode.next=head;
+        head=newNode;
+    }
+// Pop()
+    public void pop(){
+        if(isEmpty()){
+            System.out.println("No element in the list ");
+            return;
+        }
+        int top=head.data;
+        System.out.println("Deleted element:"+top);
+        head=head.next;
+    }
+// Peek()
+    public void peek(){
+        if(isEmpty()){
+            System.out.println("No head!");
+            return;
+        }
+        System.out.println("Top element:"+head.data);
+    }
+// Display()
+    public void Display(){
+        if(isEmpty()){
+            System.out.println("List is empty");
+            return;
+        }
+        Node curr=head;
+        while(curr!=null){
+            System.out.print(curr.data+" --> ");
+            curr=curr.next;
+        }
+        System.out.println("null");
+    }
+
+public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        stackUsingLL list=new stackUsingLL();
+        System.out.print("Enter reference variable:");
+        int ref=sc.nextInt();
+        list.push(ref);
+        System.out.print("Before operations:");
+        list.Display();
+        while (true) { 
+         System.out.println("Enter the operation:\n1.Push\n2.Pop\n3.Peek\n4.Display");
+         int choice=sc.nextInt();
+         switch(choice) {
+            case 1: System.out.print("Enter element:");
+                    int m=sc.nextInt();
+                    list.push(m);
+                    list.Display();
+                    break;
+            case 2: list.pop();
+                    list.Display();
+                    break;
+            case 3: list.peek();
+                    list.Display();
+                    break;
+            case 4: list.Display();
+                    break;
+            default:System.out.println("Enter valid input!");
+                break;
+         }   
+        }}
+}							
+							OUTPUT
+Enter string:
+Apple
+Reversed String:
+elppA							
+						-----------------------------------
+						
+							EXPERIMENT NO.7
+							Linked List Operations:
+import java.util.*;
+import java.io.*;
+class Reverse{
+ public int max;
+ public char a[];
+ public int top;
+ public Reverse(int s){
+ max=s;
+ a=new char[max];
+ top=-1;
+ }
+ public boolean isFull(){
+return (top==max-1);}
+public boolean isEmpty(){
+return (top==-1);}
+public void push(char item){
+a[++top]=item;}
+public char pop(){
+char temp;
+temp=a[top];
+top--;
+return temp;
+}
+}
+class reverse{
+public static void main(String[] args){
+char d;
+Scanner sc=new Scanner(System.in);
+String c=new String();
+int n;
+System.out.println("Enter string:");
+c=sc.nextLine();
+n=c.length();
+Reverse ob=new Reverse(n);
+for(int i=0;i<n;i++){
+if(ob.isFull()==false)
+ob.push(c.charAt(i));}
+
+System.out.println("Reversed String:");
+for(int i=0;i<n;i++){
+if(ob.isEmpty()==false){
+d=ob.pop();
+System.out.print(d);
+}}}}							
+							OUTPUT:-
+Enter the size of linked list: 5
+Enter the elements of linked list:1 1 2 3 4
+Before performing operations:1 --> 1 --> 2 --> 3 --> 4 --> null
+Choose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+Enter the choice:1
+Enter the element:2
+2 --> 1 --> 1 --> 2 --> 3 --> 4 --> null
+Choose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+Enter the choice:2
+Enter the element:10
+2 --> 1 --> 1 --> 2 --> 3 --> 4 --> 10 --> null
+Choose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+Enter the choice:7
+Enter the key:4
+2 --> 1 --> 1 --> 2 --> 3 --> 10 --> null
+Enter valid optionChoose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+							
+						-----------------------------------
+						
+							EXPERIMENT NO.8
+							Stack Using Linked List:
+import java.util.*;
+public class linkedListOperation{
+    Node head;
+    class Node{
+    int data;
+    Node next;
+    Node(int data){
+    this.data=data;
+    this.next=null;}
+    }
+// Add First method
+public void addFirst(int data){
+Node newNode=new Node(data);
+if(head==null){
+System.out.println("List is empty");
+return;}
+newNode.next=head;
+head=newNode;
+}
+// Add Last method
+public void addLast(int data){
+Node newNode=new Node(data);
+if(head==null){
+head=newNode;
+return;}
+Node curr=head;
+while(curr.next!=null){
+curr=curr.next;
+}
+curr.next=newNode;
+}
+// Delete Firstnode method
+public void deleteFirst(){
+if(head==null){System.out.println("List is empty"); return;}
+head=head.next;
+}
+Enter the size of linked list:
+5
+Enter the elements of linked list:1
+1
+2
+3
+4
+Before performing operations:1 --> 1 --> 2 --> 3 --> 4 --> null
+Choose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+Enter the choice:1
+Enter the element:2
+2 --> 1 --> 1 --> 2 --> 3 --> 4 --> null
+Choose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+Enter the choice:2
+Enter the element:10
+2 --> 1 --> 1 --> 2 --> 3 --> 4 --> 10 --> null
+Choose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+Enter the choice:7
+Enter the key:4
+2 --> 1 --> 1 --> 2 --> 3 --> 10 --> null
+Enter valid optionChoose an operation:
+1.Insert First
+2.Insert Last
+3.Delete First
+4.Delete Last
+5.Key
+6.Insert Specific
+7.Delete Key
+
+// Delete Lastnode method   
+public void deleteLast(){
+if(head==null){System.out.println("List is empty"); return;}
+if(head.next==null){head=head.next;}
+
+Node prev=head;
+Node curr=head.next;
+while(curr.next!=null){
+prev=curr;
+curr=curr.next;
+}
+prev.next=null;
+}
+
+// Display
+public void display(){
+Node curr=head;
+while(curr!=null){
+System.out.print(curr.data+" --> ");
+curr=curr.next;}
+System.out.println("null");
+}
+// Finding key
+public void findKey(int key){
+if(head.data==key){
+System.out.print("Key is found at 0"); return;}
+Node curr=head;
+int count=0;
+while(curr!=null){
+	if(curr.data==key){
+	System.out.print("Key is found at index "+count);
+	return;}
+	count++;
+	curr=curr.next;	
+}
+if(curr==null){System.out.print("Element is not int the list"); return;}
+}   
+
+public void insertSpecific(int index,int data){
+Node newNode=new Node(data);
+Node curr=head;
+for(int i=0;i<index-1;i++){
+   curr=curr.next;
+}
+newNode.next=curr.next;
+curr.next=newNode;
+}    
+
+// Delete Key
+public void deleteKey(int key){
+Node prev=head;
+Node curr=head.next;
+if(head.data==key){
+head=head.next;}
+while(curr!=null){
+	if(curr.data==key){
+	prev.next=curr.next;
+	return;
+	}
+ prev=curr;
+ curr=curr.next;
+}
+}
+    
+public static void main(String[] args){
+Scanner sc=new Scanner (System.in);
+linkedListOperation list=new linkedListOperation();
+System.out.println("Enter the size of linked list:");
+int size=sc.nextInt();
+System.out.print("Enter the elements of linked list:");
+for(int i=0;i<size;i++){
+int element=sc.nextInt();
+ list.addLast(element);
+}
+System.out.print("Before performing operations:");
+list.display();
+while(true){
+System.out.println("Choose an operation:\n1.Insert First\n2.Insert Last\n3.Delete First\n4.Delete Last\n5.Key\n6.Insert Specific\n7.Delete Key");
+System.out.print("Enter the choice:");
+int choice=sc.nextInt();
+switch(choice){
+case 1: System.out.print("Enter the element:");
+	int m=sc.nextInt(); 
+	list.addFirst(m);
+	list.display();
+	break;
+case 2: System.out.print("Enter the element:");
+	int n=sc.nextInt(); 
+	list.addLast(n);
+	list.display();
+	break;
+case 3: list.deleteFirst();
+	list.display();
+	break;
+case 4: list.deleteLast();
+	list.display();
+	break;
+case 5: System.out.print("Enter the key:");
+	int key=sc.nextInt();
+	list.findKey(key);
+	break;
+case 6: System.out.print("Enter the element:");
+	int o=sc.nextInt();
+	System.out.print("Enter the index:");
+	int index=sc.nextInt();
+	list.insertSpecific(index,o);
+	list.display();
+	break;
+case 7: System.out.print("Enter the key:");
+	int key1=sc.nextInt();
+	list.deleteKey(key1);
+	list.display();
+default:System.out.print("Enter valid option");	
+}
+}
+}
+}							
+							OUTPUT:-
+Enter reference variable:5
+Before operations:5 --> null
+Enter the operation:
+1.Push
+2.Pop
+3.Peek
+4.Display
+1
+Enter element:1
+1 --> 5 --> null
+Enter the operation:
+1.Push
+2.Pop
+3.Peek
+4.Display
+2
+Deleted element:1
+5 --> null
+Enter the operation:
+1.Push
+2.Pop
+3.Peek
+4.Display
+3
+Top element:5
+5 --> null
+Enter the operation:
+1.Push
+2.Pop
+3.Peek
+4.Display
+4
+5 --> null
+Enter the operation:
+1.Push
+2.Pop
+3.Peek
+4.Display
+							
+						-----------------------------------
+												
+							EXPERIMENT NO.9
+							Palindrome:
+
+import java.util.*;
+class Node{
+
+	char data;
+	Node next;
+	Node prev;
+	
+	public Node(char data){
+	this.data=data;
+	this.next=null;
+	this.prev=null;
+	
+	}
+
+}
+class Doublelink{
+
+	Node first;
+	Node tail;
+	
+	Doublelink(){
+	first=null;
+	tail=null;
+	}
+	
+	public void append(char value){
+	
+	Node ob= new Node(value);
+	Node temp=first;
+	if(first==null){
+		first =ob;
+		tail=ob;
+	}
+	else{
+		tail.next=ob;
+		ob.prev=tail;
+		tail=ob;
+	}
+	
+	}
+	
+	public void Compare(){
+		
+		int count=0;
+		Node head = first;
+		Node end = tail;
+		while(head!=end){
+			if(head.data!=end.data){
+				count++;
+			}
+			head=head.next;
+			end=end.prev;
+			
+		}
+		
+		if(count>0){
+		System.out.print(" is not  Pallindrome ");
+		}
+		else{
+		System.out.print("is  Pallindrome ");
+		}
+	}
+
+}
+class pallindrome{
+	public static void main(String[] args){
+		Doublelink dlink = new Doublelink();
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the string:");
+		String string = sc.nextLine();
+		for(int i=0;i<string.length();i++){
+			char ch = string.charAt(i);
+			dlink.append(ch);
+		}
+		dlink.Compare();
+	}
+}
+							
+							OUTPUT:-
+Enter the string:malayalam
+is  Pallindrome 							
+						-----------------------------------
+												
+							EXPERIMENT NO.10
+							Infix To Postfix:
+import java.util.Stack;
+import java.util.Scanner;
+
+public class InfixToPostfix {
+
+    public static String infixToPostfix(String infix) {
+        // create a stack to hold operators
+        Stack<Character> operatorStack = new Stack<>();
+        // create a StringBuilder to hold postfix expression
+        StringBuilder postfix = new StringBuilder();
+        // loop through the infix expression
+        for (int i = 0; i < infix.length(); i++) {
+            char ch = infix.charAt(i);
+            // if the character is a letter or digit, append it to the postfix expression
+            if (Character.isLetterOrDigit(ch)) {
+                postfix.append(ch);
+            }
+            // if the character is an opening parenthesis, push it onto the stack
+            else if (ch == '(') {
+                operatorStack.push(ch);
+            }
+            // if the character is a closing parenthesis, pop operators from the stack and append them to the postfix expression until the opening parenthesis is found
+            else if (ch == ')') {
+                while (!operatorStack.isEmpty() && operatorStack.peek() != '(') {
+                    postfix.append(operatorStack.pop());
+                }
+                // remove the opening parenthesis from the stack
+                operatorStack.pop();
+            }
+            // if the character is an operator, pop operators from the stack and append them to the postfix expression until an operator with lower precedence is found, then push the current operator onto the stack
+            else {
+                while (!operatorStack.isEmpty() && precedence(ch) <= precedence(operatorStack.peek())) {
+                    postfix.append(operatorStack.pop());
+                }
+                operatorStack.push(ch);
+            }
+        }
+        // pop any remaining operators from the stack and append them to the postfix expression
+        while (!operatorStack.isEmpty()) {
+            postfix.append(operatorStack.pop());
+        }
+        return postfix.toString();
+    }
+
+    private static int precedence(char operator) {
+        switch (operator) {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+                return 3;
+            default:
+                return -1;
+        }
+    }
+
+    public static void main(String[] args) {
+        String infix = "a+b*(c^d-e)^(f+g*h)-i";
+        String postfix = infixToPostfix(infix);
+        System.out.println(postfix); // output: abcd^e-fgh*+^*+i-
+
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the infix expression: ");
+        String exp = scanner.nextLine();
+
+        String result = infixToPostfix(exp);
+        System.out.println("Postfix expression: " + result);
+    }
+}							
+							OUTPUT:-
+Enter the infix expression: (a+b)*c/d^f
+Postfix expression: ab+c*df^/							
+						-----------------------------------
+						
+							EXPERIMENT NO.11
+							Circular Queue:
+import java.util.*;
+
+class CircularQueue {
+    private int[] queue;
+    private int front, rear, size, capacity;
+
+    // Constructor to initialize the queue with a given capacity
+    public CircularQueue(int capacity) {
+        this.capacity = capacity;
+        queue = new int[capacity];
+        front = rear = -1; // Empty queue
+        size = 0;
+    }
+
+    // Enqueue (add element to the rear)
+    public void Enqueue(int data) {
+        if (size == capacity) {
+            System.out.println("Queue is full");
+            return;
+        }
+
+        // If queue is empty, initialize front and rear
+        if (front == -1) {
+            front = 0;
+            rear = 0;
+        } else {
+            rear = (rear + 1) % capacity; // Circular increment
+        }
+
+        queue[rear] = data;
+        size++;
+        System.out.println("Enqueued element: " + data);
+    }
+
+    // Dequeue (remove element from the front)
+    public void Dequeue() {
+        if (size == 0) {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        int dequeuedElement = queue[front];
+        System.out.println("Dequeued element: " + dequeuedElement);
+
+        // If there is only one element, reset front and rear
+        if (front == rear) {
+            front = rear = -1;
+        } else {
+            front = (front + 1) % capacity; // Circular increment
+        }
+
+        size--;
+    }
+
+    // Display the queue
+    public void display() {
+        if (size == 0) {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        System.out.print("Queue: ");
+        int i = front;
+        for (int count = 0; count < size; count++) {
+            System.out.print(queue[i] + "|");
+            i = (i + 1) % capacity; // Circular increment
+        }
+        System.out.println();
+    }
+
+    // Main method for user interaction
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the capacity of the queue: ");
+        int capacity = sc.nextInt();
+
+        CircularQueue queue = new CircularQueue(capacity);
+
+        while (true) {
+            System.out.println("\nEnter the operation:\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the element to enqueue: ");
+                    int element = sc.nextInt();
+                    queue.Enqueue(element);
+                    queue.display();
+                    break;
+                case 2:
+                    queue.Dequeue();
+                    queue.display();
+                    break;
+                case 3:
+                    queue.display();
+                    break;
+                case 4:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid option, please try again.");
+            }
+        }
+    }
+}
+							
+							OUTPUT:-
+Enter the capacity of the queue: 5
+
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the element to enqueue: 2
+Enqueued element: 2
+Queue: 2|
+
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 1
+Enter the element to enqueue: 10
+Enqueued element: 10
+Queue: 2|10|
+
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 2
+Dequeued element: 2
+Queue: 10|
+
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 3
+Queue: 10|
+
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Display
+4.Exit
+Enter your choice: 4
+Exiting...
+							
+						-----------------------------------
+						
+							EXPERIMENT NO.12
+							Queue Using Linked List:
+import java.util.*;
+class QLL{
+  private Node head;
+  private class Node{
+	int data;
+	Node next;
+	Node(int data){
+	this.data=data;
+	this.next=null;}
+}
+
+// insertLast
+public void Enqueue(int data){
+  Node newNode=new Node(data);
+  if(head==null){
+	head=newNode;
+	return;
+	}
+  Node curr=head;
+  while(curr.next!=null){
+	curr=curr.next;}
+	curr.next=newNode;	
+}
+// deleteFirst
+public void Dequeue(){
+	if(head==null){
+	System.out.println("Queue is empty");
+	return;
+	}
+	System.out.println("Dequeued element is "+head.data);
+	head=head.next;}
+// Display
+public void display(){
+Node curr=head;
+while(curr!=null){
+System.out.print(curr.data+" --> ");
+curr=curr.next;}
+System.out.println("null");
+}
+
+public static void main(String[] args){
+Scanner sc=new Scanner (System.in);
+QLL list=new QLL();
+
+while(true){
+System.out.println("Enter the operation:\n1.Enqueue\n2.Dequeue\n3.Exit");
+System.out.print("Enter the choice:");
+int ch=sc.nextInt();
+switch(ch){
+case 1: System.out.print("Enter the element:");
+	int m=sc.nextInt(); 
+	list.Enqueue(m);
+	list.display();
+	break;
+case 2: list.Dequeue();
+	list.display();
+	break;
+case 3:System.out.print("Exiting...");
+	return;
+default:System.out.print("Enter valid option");	
+}}}}							
+							OUTPUT:-
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Exit
+Enter the choice:1
+Enter the element:1
+1 --> null
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Exit
+Enter the choice:1
+Enter the element:2
+1 --> 2 --> null
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Exit
+Enter the choice:1
+Enter the element:4
+1 --> 2 --> 4 --> null
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Exit
+Enter the choice:2
+Dequeued element is 1
+2 --> 4 --> null
+Enter the operation:
+1.Enqueue
+2.Dequeue
+3.Exit
+Enter the choice:3
+Exiting...							
+						-----------------------------------
+												
+							EXPERIMENT NO.13
+							Infix To Prefix:
+import java.io.*;
+import java.util.Stack; // Import the Stack class from java.util
+
+class infpre {
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String in = "";
+        try {
+            System.out.print("Enter infix : ");
+            in = br.readLine();  // Read the infix expression from user
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stack<String> stack = new Stack<>();  // Using the built-in Stack class
+        String out = "";
+        char[] temp = in.toCharArray();  // Convert the input string to a char array
+
+        // Iterate over the characters in reverse order
+        for (int i = in.length() - 1; i >= 0; i--) {
+            System.out.println(out); // Print the output for each iteration (debugging)
+
+            switch (temp[i]) {
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '^':
+                    // Process operators
+                    while (!stack.isEmpty() && operatorValue(stack.peek()) > operatorValue(String.valueOf(temp[i]))) {
+                        out = stack.pop() + out; // Pop and add to the output
+                    }
+                    stack.push(String.valueOf(temp[i]));  // Push the current operator onto the stack
+                    break;
+                case ')':
+                    stack.push(String.valueOf(temp[i]));  // Push closing parenthesis onto stack
+                    break;
+                case '(':
+                    // Process until finding matching closing parenthesis
+                    while (!stack.peek().equals(")")) {
+                        out = stack.pop() + out;  // Pop and add to the output
+                    }
+                    stack.pop();  // Remove the closing parenthesis
+                    break;
+                default:
+                    // Add operands (numbers or variables) directly to the output
+                    out = temp[i] + out;
+                    break;
+            }
+        }
+
+        // Pop all remaining operators in the stack
+        while (!stack.isEmpty()) {
+            out = stack.pop() + out;
+        }
+
+        System.out.println("Prefix expression: " + out);  // Final result
+    }
+
+    // Method to define precedence of operators
+    static int operatorValue(String operator) {
+        switch (operator) {
+            case "+":
+            case "-":
+                return 0;
+            case "*":
+            case "/":
+                return 1;
+            case "^":
+                return 2;
+            default:
+                return -1;
+        }
+    }
+}
+							
+							OUTPUT:-
+Enter infix : (a+b)*c/d^f
+Prefix expression: /*+abc^df
+						
+						-----------------------------------
+						
+							EXPERIMENT NO.14
+							Prefix To Postfix:
+import java.io.*;
+import java.util.Stack;  // Import the Stack class from java.util
+
+class prePost {
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String in = "";
+        try {
+            System.out.print("Enter prefix : ");
+            in = br.readLine();  // Read the prefix expression from user
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Using the built-in Stack class from java.util
+        Stack<String> stack = new Stack<>();
+        char[] temp = in.toCharArray();  // Convert the input string to a char array
+
+        // Traverse the prefix expression from right to left
+        for (int i = in.length() - 1; i >= 0; i--) {
+            char currentChar = temp[i];
+
+            if (isOperator(currentChar)) {
+                // Pop two operands from the stack
+                String a = stack.pop();
+                String b = stack.pop();
+                
+                // Combine them with the operator and push back to the stack
+                stack.push(a + b + currentChar);
+            } else {
+                // If it's an operand, push it to the stack
+                stack.push(String.valueOf(currentChar));
+            }
+        }
+
+        // The final result is the only element left in the stack
+        System.out.println("Postfix expression: " + stack.pop());
+    }
+
+    // Helper method to check if a character is an operator
+    static boolean isOperator(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
+    }
+}
+							
+							OUTPUT:-
+Enter prefix : -a/b*c^de
+Postfix expression: abcde^*/-							
+						-----------------------------------
+						
+							EXPERIMENT NO.15
+							Vowels:
+import java.util.*;
+
+ class Stringlist{
+
+	 class Node{
+		char data;
+		Node next;
+		
+		public Node(char data){
+			this.data = data;
+			this.next= null;
+		
+		}
+	}
+	Node head;
+	
+	public  void insertCharacter(char c){
+	
+		Node ob = new Node(c);
+		Node curr =head;
+		if(head==null){
+			head=ob;
+			}
+		else{
+			
+			while(curr.next!=null){
+				curr=curr.next;
+			}
+			curr.next = ob;
+		}
+	
+	}
+	
+	static boolean isVowel(char ch){
+		return ch=='A'||ch=='a'||ch=='E'||ch=='e'||ch=='I'||ch=='i'||ch=='O'||ch=='o'||ch=='U'||ch=='u';	
+	}
+	
+	public  int CountVowels(){
+	
+		int count=0;
+		Node temp =head;
+		while(temp!=null){
+			if(isVowel(temp.data)){
+				count++;
+			}
+			temp = temp.next;
+		}
+		return count;
+	}
+}
+	class vowel{
+	
+	public static void main(String[] args){
+		
+		Scanner sc = new Scanner(System.in);
+		Stringlist list = new Stringlist();
+		System.out.println("Enter the String : ");
+		
+		String str = sc.nextLine();
+		for(int i=0;i<str.length();i++){
+			char c =str.charAt(i);
+			list.insertCharacter(c);	
+		}
+		int m = list.CountVowels();
+		System.out.println("Number of Vowels is : "+m);
+	}
+
+}							
+							OUTPUT:-
+Enter the String : 
+Apple
+Number of Vowels is : 2							
+						-----------------------------------
+						
+							EXPERIMENT NO.16
+							Parenthesis:
+import java.util.*;
+
+class parenthesis{
+
+
+	public static	int top = -1;
+	public static	int count =0;
+
+	public static int count(String str){
+		char[] stack = new char [str.length()];
+
+		
+		for(int i=0;i<str.length();i++){
+		char ch = str.charAt(i);
+		
+		if(ch=='('||ch=='{'||ch=='['){
+		top++;
+		stack[top]=ch;
+		
+		}
+		else if(ch==')'||ch=='}'||ch==']') 
+		if(!isEmpty() && matcher(stack[top],ch)){
+		top--;
+		count++;
+		}
+		}
+		return count;
+	}
+	
+	public static boolean matcher(char open,char close){
+	return ((open=='(' && close==')')||(open=='{' && close =='}')||(open=='[' && close==']'));
+	}
+	
+	public static boolean isEmpty(){
+	return top==-1;
+	}
+	
+	public static void main(String[] args){
+	Scanner sc = new Scanner(System.in);
+	String s= sc.nextLine();
+	int number = count(s);
+	System.out.println("Number of Valid Brackets "+ number);
+	}
+
+}
+							
+							OUTPUT:-
+Enter the brackets:						
+[{()}](}
+Number of Valid Brackets 3							
+						-----------------------------------
+						
+							EXPERIMENT NO.17
+							Polynomial Addition:-
+import java.util.Scanner;
+class Node {
+    int coefficient, exponent;
+    Node next;
+
+    Node(int coefficient, int exponent) {
+        this.coefficient = coefficient;
+        this.exponent = exponent;
+        this.next = null;
+    }
+}
+
+class Polynomial {
+    Node head;
+
+    public void insertTerm(int coefficient, int exponent) {
+        Node newNode = new Node(coefficient, exponent);
+        if (head == null || head.exponent < exponent) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null && current.next.exponent >= exponent) {
+                current = current.next;
+            }
+            if (current.exponent == exponent) {
+                current.coefficient += coefficient;
+            } else {
+                newNode.next = current.next;
+                current.next = newNode;
+            }
+        }
+    }
+
+    public static Polynomial addPolynomials(Polynomial p1, Polynomial p2) {
+        Polynomial result = new Polynomial();
+        Node term1 = p1.head;
+        Node term2 = p2.head;
+
+        while (term1 != null && term2 != null) {
+            if (term1.exponent == term2.exponent) {
+                result.insertTerm(term1.coefficient + term2.coefficient, term1.exponent);
+                term1 = term1.next;
+                term2 = term2.next;
+            } else if (term1.exponent > term2.exponent) {
+                result.insertTerm(term1.coefficient, term1.exponent);
+                term1 = term1.next;
+            } else {
+                result.insertTerm(term2.coefficient, term2.exponent);
+                term2 = term2.next;
+            }
+        }
+
+        while (term1 != null) {
+            result.insertTerm(term1.coefficient, term1.exponent);
+            term1 = term1.next;
+        }
+
+        while (term2 != null) {
+            result.insertTerm(term2.coefficient, term2.exponent);
+            term2 = term2.next;
+        }
+
+        return result;
+    }
+
+    public void displayPolynomial() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.coefficient + "x^" + current.exponent);
+            current = current.next;
+            if (current != null) {
+                System.out.print(" + ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+public class PolynomialAddition {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        Polynomial polynomial1 = new Polynomial();
+        Polynomial polynomial2 = new Polynomial();
+
+        System.out.println("Enter the number of terms in the first polynomial:");
+        int terms1 = scanner.nextInt();
+        System.out.println("Enter the terms (coefficient and exponent) for the first polynomial:");
+        for (int i = 0; i < terms1; i++) {
+            int coefficient = scanner.nextInt();
+            int exponent = scanner.nextInt();
+            polynomial1.insertTerm(coefficient, exponent);
+        }
+
+        System.out.println("Enter the number of terms in the second polynomial:");
+        int terms2 = scanner.nextInt();
+        System.out.println("Enter the terms (coefficient and exponent) for the second polynomial:");
+        for (int i = 0; i < terms2; i++) {
+            int coefficient = scanner.nextInt();
+            int exponent = scanner.nextInt();
+            polynomial2.insertTerm(coefficient, exponent);
+        }
+
+        Polynomial result = Polynomial.addPolynomials(polynomial1, polynomial2);
+        
+        System.out.println("First Polynomial:");
+        polynomial1.displayPolynomial();
+        
+        System.out.println("Second Polynomial:");
+        polynomial2.displayPolynomial();
+
+        System.out.println("Result of Addition:");
+      result.displayPolynomial();
+
+        scanner.close();
+    }
+}
+
+							
+							OUTPUT:-
+Enter the number of terms in the first polynomial:
+3
+Enter the terms (coefficient and exponent) for the first polynomial:
+5 3
+4 1 
+2 0
+Enter the number of terms in the second polynomial:
+4
+Enter the terms (coefficient and exponent) for the second polynomial:
+5 4
+2 2
+3 1
+5 0
+First Polynomial:
+5x^3 + 4x^1 + 2x^0
+Second Polynomial:
+5x^4 + 2x^2 + 3x^1 + 5x^0
+Result of Addition:
+5x^4 + 5x^3 + 2x^2 + 7x^1 + 7x^0
+							
+						-----------------------------------
+						
+							EXPERIMENT NO.18
+							Binary Tree:-
+import java.util.*;
+class TreeNode{
+int val;
+TreeNode left;
+TreeNode right;
+TreeNode(int key)
+{ val=key; 
+  left=right=null;
+  }}
+
+class Binarytree{
+TreeNode root;
+public Binarytree()
+{ root=null; }
+
+public void insert(int key)
+ { root=insertRec(root,key);
+    }
+private TreeNode insertRec(TreeNode root, int key)
+ { if(root==null)
+  { root = new TreeNode(key);
+  return root;
+  }
+ if(key<root.val) {
+   root.left=insertRec(root.left,key); }
+ else {
+  root.right=insertRec(root.right,key);}
+  return root;}
+  
+ public void inOrder() {
+  inOrderRec(root);
+  System.out.println();
+    }
+    
+ private void inOrderRec(TreeNode node)
+  { if(node!=null) 
+     { inOrderRec(node.left);
+      System.out.print(node.val+" ");
+      inOrderRec(node.right); }}
+      
+ public void preOrder() {
+  preOrderRec(root);
+  System.out.println();
+    }
+    
+ private void preOrderRec(TreeNode node)
+  { if(node!=null) 
+     { System.out.print(node.val+" ");
+       preOrderRec(node.left);
+      preOrderRec(node.right); }}
+      
+      
+ public void postOrder() {
+  postOrderRec(root);
+  System.out.println();
+    }
+    
+ private void postOrderRec(TreeNode node)
+  { if(node!=null) 
+     { postOrderRec(node.left);
+       postOrderRec(node.right); 
+      System.out.print(node.val+" ");}}}
+      
+ public class bsearch{
+   public static void main(String [] args)
+    { Scanner sc = new Scanner(System.in);  
+     Binarytree btree = new Binarytree ();
+     boolean exit=false;
+     while(!exit)
+     { System.out.println("\n1.Add elements \n2.Inorder \n3.Preorder \n4.Postorder \n5.Exit \nEnter your choice");
+     int ch=sc.nextInt();
+     switch(ch)
+      { case 1: System.out.print("Enter the element :");
+                int element= sc.nextInt();
+                btree.insert(element);
+                break;
+        case 2: btree.inOrder();
+                break;
+        case 3: btree.preOrder();
+                break;
+        case 4: btree.postOrder();
+                break;
+        case 5:System.out.println("Exited");
+               exit=true;
+                break;
+        default: System.out.println("Invalid choice!");
+        }}}}
+							
+							OUTPUT:-
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+1
+Enter the element :5
+
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+1
+Enter the element :3
+
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+1
+Enter the element :8
+
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+1
+Enter the element :1
+
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+2
+1 3 5 8 
+
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+3
+5 3 1 8 
+
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+4
+1 3 8 5 
+
+1.Add elements 
+2.Inorder 
+3.Preorder 
+4.Postorder 
+5.Exit 
+Enter your choice
+5
+Exited
+							
+						-----------------------------------        
+
